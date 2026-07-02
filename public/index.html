@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta
+      name="description"
+      content="POSED Photo Booth Co. offers mirror booth and vintage Model T photo booth experiences for weddings, parties, brand events, and celebrations."
+    >
+    <title>POSED Photo Booth Co.</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="POSED Photo Booth Co. home">
+        <span class="brand-copy">
+          <span class="brand-main">POSED</span>
+          <span class="brand-sub"><span></span>Photo Booth Co.<span></span></span>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="mirror-booth.html">Booths</a>
+        <a href="model-t-booth.html">Model T Prop</a>
+        <a href="#quote">Quote</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Give your guests a reason to gather.</h1>
+          <p>Memorable photo booth experiences for weddings, parties, and celebrations.</p>
+          <a class="button" href="#quote">Get POSED</a>
+        </div>
+      </section>
+
+      <section class="booth-section" id="booths" aria-label="Photo booth options">
+        <div class="section-heading">
+          <p class="eyebrow">More than a photo booth</p>
+          <figure class="owner-quote">
+            <blockquote>
+              <p>
+                &ldquo;The most memorable celebrations have something happening beyond
+                the bar that naturally brings people together. That's why we love
+                photo booths.
+              </p>
+              <p>
+                They create opportunities to steal away the bride and groom,
+                birthday girl, or guest of honor for a few fun photos you might
+                not have otherwise taken. And for the more introverted guests, a
+                photo booth is the perfect excuse to grab a friend, get involved,
+                and feel part of the celebration.
+              </p>
+              <p>
+                At the end of the night, everyone leaves with a little piece of
+                the celebration to take home.
+              </p>
+              <p>
+                Every great event needs an attraction. We think ours is
+                ten-out-of-ten fun.&rdquo;
+              </p>
+            </blockquote>
+            <figcaption>From the owner, an avid party planner</figcaption>
+          </figure>
+        </div>
+        <div class="booth-grid">
+          <a class="booth-card-link" href="mirror-booth.html">
+            <article class="booth-card">
+              <figure class="booth-card-media">
+                <img
+                  src="assets/posed-photo-booth-hero.png"
+                  alt="Magic Mirror photo booth setup with event backdrop"
+                >
+              </figure>
+              <p class="booth-label">Magic Mirror Photo Booth</p>
+              <h3>A modern, interactive photo experience.</h3>
+              <p>
+                With a full-length interactive touchscreen, guests can pose, add
+                their signature, and receive instant prints in seconds. Fun,
+                engaging, and guaranteed to draw a crowd.
+              </p>
+              <ul>
+                <li>Full-length interactive mirror</li>
+                <li>Custom backdrop available</li>
+                <li>Photo strips or classic 4x6 prints</li>
+                <li>Color or black-and-white prints</li>
+                <li>Props and booth attendant included</li>
+              </ul>
+              <span class="card-link-text">View details</span>
+            </article>
+          </a>
+        </div>
+      </section>
+
+      <section class="process-section" aria-labelledby="process-title">
+        <div class="process-inner">
+          <div class="process-heading">
+            <p class="eyebrow">How it works</p>
+            <h2 id="process-title">Simple from first quote to final print.</h2>
+          </div>
+          <ol class="process-list">
+            <li>
+              <span>01</span>
+              <p>Request a quote</p>
+            </li>
+            <li>
+              <span>02</span>
+              <p>Customize your experience</p>
+            </li>
+            <li>
+              <span>03</span>
+              <p>We handle setup &amp; attendants</p>
+            </li>
+            <li>
+              <span>04</span>
+              <p>Guests leave with memories</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="quote-section" id="quote" aria-labelledby="quote-title">
+        <div class="quote-intro">
+          <p class="eyebrow">Ready to get POSED?</p>
+          <h2 id="quote-title">Start with a quick quote.</h2>
+          <p>
+            Answer a few simple questions and we'll help build the right package
+            for your event.
+          </p>
+        </div>
+
+        <form class="quote-form" id="quote-form" novalidate>
+          <div class="progress" aria-label="Quote form progress">
+            <span id="progress-text">A few quick questions</span>
+            <span class="progress-track"><span id="progress-fill"></span></span>
+          </div>
+
+          <fieldset class="form-step is-active" data-step="0">
+            <legend>What is your name?</legend>
+            <label>
+              Name
+              <input type="text" name="name" autocomplete="name" required>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="1">
+            <legend>What is your email?</legend>
+            <label>
+              Email
+              <input type="email" name="email" autocomplete="email" required>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="2">
+            <legend>What is your phone number?</legend>
+            <label>
+              Phone
+              <input type="tel" name="phone" autocomplete="tel" required>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="3">
+            <legend>What type of event is it?</legend>
+            <label>
+              Type of event
+              <select name="eventType" required>
+                <option value="">Select one</option>
+                <option value="Wedding">Wedding</option>
+                <option value="Birthday">Birthday</option>
+                <option value="Corporate event">Corporate event</option>
+                <option value="Baby shower">Baby shower</option>
+                <option value="Branding event">Branding event</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="4">
+            <legend>What date is your event?</legend>
+            <label>
+              Event date
+              <input type="date" name="eventDate" required>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="5">
+            <legend>Where is the event?</legend>
+            <label>
+              Venue or city
+              <input type="text" name="location" placeholder="Venue, city, or address">
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="6">
+            <legend>About how many people will attend?</legend>
+            <label class="range-field">
+              <span>Estimated guest count: <strong id="guest-count-value">150</strong></span>
+              <input
+                type="range"
+                name="guestCount"
+                min="25"
+                max="500"
+                step="25"
+                value="150"
+              >
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="7">
+            <legend>Your photo booth experience</legend>
+            <div class="choice-grid">
+              <label class="choice-card">
+                <input type="radio" name="booth" value="Mirror Booth" checked>
+                <span>
+                  <strong>Mirror Booth</strong>
+                  <small>Starting at $650</small>
+                  Interactive full-body mirror photos, on-screen signing, and prints.
+                </span>
+                <img
+                  class="choice-image"
+                  src="assets/posed-photo-booth-hero.png"
+                  alt="Mirror booth setup with backdrop and event lighting"
+                >
+              </label>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="8">
+            <legend>How many hours do you need the booth?</legend>
+            <label>
+              Booth time
+              <select name="hours">
+                <option value="2">2 hours</option>
+                <option value="3" selected>3 hours</option>
+                <option value="4">4 hours</option>
+                <option value="5">5 hours</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="9">
+            <legend>Which print format do you prefer?</legend>
+            <label>
+              Print format
+              <select name="printFormat">
+                <option value="Photo booth strip">Photo booth strip</option>
+                <option value="Classic 4x6">Classic 4x6</option>
+                <option value="Unsure">Unsure</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="10">
+            <legend>Do you want color or black and white photos?</legend>
+            <label>
+              Photo style
+              <select name="photoStyle">
+                <option value="Color">Color</option>
+                <option value="Black and white">Black and white</option>
+                <option value="Both color and black and white">Both</option>
+                <option value="Unsure">Unsure</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="11">
+            <legend>Do you want a custom backdrop?</legend>
+            <label>
+              Backdrop
+              <select name="backdrop">
+                <option value="Standard backdrop">Standard backdrop</option>
+                <option value="Custom backdrop">Custom backdrop</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="12">
+            <legend>What time does the event start?</legend>
+            <label>
+              Event start time
+              <input type="time" name="eventTime">
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="13">
+            <legend>Will the booth be indoors or outdoors?</legend>
+            <label>
+              Setup location
+              <select name="setupLocation">
+                <option value="Indoor">Indoor</option>
+                <option value="Outdoor">Outdoor</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="14">
+            <legend>Will there be power access nearby?</legend>
+            <label>
+              Power access nearby?
+              <select name="powerAccess">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+                <option value="Not sure yet">Not sure yet</option>
+              </select>
+            </label>
+          </fieldset>
+
+          <fieldset class="form-step" data-step="15">
+            <legend>Anything else we should know?</legend>
+            <label>
+              Notes
+              <textarea
+                name="notes"
+                rows="4"
+                placeholder="Venue rules, theme, timing, stairs/elevator access, special print requests, or questions."
+              ></textarea>
+            </label>
+          </fieldset>
+
+          <p class="form-message" id="form-message" role="status"></p>
+
+          <div class="form-actions">
+            <button class="secondary-button" type="button" id="prev-step">Back</button>
+            <button type="button" id="next-step">Next</button>
+            <button type="submit" id="show-quote">Get quote</button>
+          </div>
+        </form>
+
+        <aside class="quote-result" id="quote-result" aria-live="polite">
+          <p class="eyebrow">Your estimated quote</p>
+          <strong id="quote-total">$0</strong>
+          <p id="quote-summary">Complete the form to see an estimate.</p>
+          <a class="email-button is-disabled" id="email-quote" href="#" aria-disabled="true">
+            Email quote
+          </a>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="brand brand-small" href="#top" aria-label="POSED Photo Booth Co. home">
+        <span class="brand-copy">
+          <span class="brand-main">POSED</span>
+          <span class="brand-sub"><span></span>Photo Booth Co.<span></span></span>
+        </span>
+      </a>
+      <p>Magic Mirror Photo Booth and vintage Model T prop rentals.</p>
+    </footer>
+
+    <a class="mobile-sticky-cta" href="#quote">Get Quote</a>
+  </body>
+</html>
