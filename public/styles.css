@@ -168,7 +168,7 @@ footer {
   padding: clamp(82px, 10vw, 142px) clamp(28px, 8vw, 112px) clamp(72px, 8vw, 112px);
   background:
     linear-gradient(90deg, rgba(20, 18, 17, 0.9), rgba(20, 18, 17, 0.54)),
-    url("/images/model-t.jpg") center center / cover no-repeat;
+    url("assets/mirror-booth-guests-hero.png") center center / cover no-repeat;
   color: var(--white);
 }
 
@@ -310,12 +310,18 @@ h3 {
 
 .booth-section,
 .process-section,
+.owner-section,
 .quote-section {
   padding: clamp(46px, 5.5vw, 74px) clamp(20px, 6vw, 88px);
 }
 
 .booth-section {
   background: var(--ivory);
+}
+
+.owner-section {
+  background: var(--paper);
+  border-top: 1px solid var(--line);
 }
 
 .section-heading,
@@ -991,6 +997,7 @@ input[type="range"] {
   .hero,
   .booth-section,
   .process-section,
+  .owner-section,
   .quote-section,
   .detail-hero,
   .strip-preview {
@@ -1000,7 +1007,8 @@ input[type="range"] {
   .brand {
     align-items: center;
     gap: 4px;
-    width: min(100%, 18rem);
+    width: min(100%, 15.5rem);
+    margin-left: 8px;
   }
 
   .brand-main {
