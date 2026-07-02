@@ -1,0 +1,5 @@
+.DS_Store
+node_modules/
+*.CR2
+*.NEF
+public/images/photo-booth-work/
