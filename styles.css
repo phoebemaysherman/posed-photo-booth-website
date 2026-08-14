@@ -990,6 +990,8 @@ input[type="range"] {
 
   .site-header {
     position: static;
+    align-items: center;
+    padding-block: 14px 12px;
   }
 
   .site-header,
@@ -1008,7 +1010,7 @@ input[type="range"] {
     align-items: center;
     gap: 4px;
     width: min(100%, 15.5rem);
-    margin-left: 8px;
+    margin-inline: auto;
   }
 
   .brand-main {
@@ -1062,6 +1064,10 @@ input[type="range"] {
   .hero p {
     font-size: 1rem;
     line-height: 1.55;
+  }
+
+  .hero .button {
+    display: none;
   }
 
   h2 {
