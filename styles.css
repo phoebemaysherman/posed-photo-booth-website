@@ -1077,8 +1077,9 @@ input[type="range"] {
   }
 
   .hero {
-    min-height: 500px;
-    padding-block: 72px;
+    min-height: 620px;
+    align-items: end;
+    padding-block: 170px 72px;
   }
 
   .hero-copy {
