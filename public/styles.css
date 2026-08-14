@@ -158,6 +158,29 @@ footer {
   color: var(--ink);
 }
 
+.contact-link,
+.footer-email {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  border: 1px solid var(--ink);
+  border-radius: 4px;
+  padding: 0 18px;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.contact-link:hover,
+.footer-email:hover {
+  background: var(--ink);
+  color: var(--white);
+}
+
 .hero {
   min-height: clamp(520px, 68vh, 680px);
   display: grid;
@@ -782,6 +805,10 @@ input[type="range"] {
   margin: 0;
 }
 
+.footer-email {
+  white-space: nowrap;
+}
+
 .detail-page .site-header {
   position: sticky;
 }
@@ -940,8 +967,12 @@ input[type="range"] {
     line-height: 1.03;
   }
 
-  .site-header,
-  .site-footer {
+.site-header,
+.site-footer {
+    flex-direction: column;
+  }
+
+  .site-header {
     flex-direction: column;
   }
 
@@ -991,7 +1022,10 @@ input[type="range"] {
   .site-header {
     position: static;
     align-items: center;
-    padding-block: 14px 12px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+    padding-block: 10px 9px;
   }
 
   .site-header,
@@ -1009,21 +1043,22 @@ input[type="range"] {
   .brand {
     align-items: center;
     gap: 4px;
-    width: min(100%, 15.5rem);
-    margin-inline: auto;
+    width: auto;
+    margin-inline: 0;
   }
 
   .brand-main {
-    font-size: 2.4rem;
-    letter-spacing: 0.2em;
-    text-indent: 0.2em;
+    font-size: 1.95rem;
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
   }
 
   .brand-sub {
-    gap: 8px;
-    font-size: 0.56rem;
-    letter-spacing: 0.22em;
-    text-indent: 0.22em;
+    gap: 6px;
+    width: 10.5rem;
+    font-size: 0.48rem;
+    letter-spacing: 0.18em;
+    text-indent: 0.18em;
   }
 
   .brand-copy {
@@ -1031,9 +1066,14 @@ input[type="range"] {
   }
 
   .nav {
-    width: 100%;
-    justify-content: space-between;
-    gap: 16px;
+    width: auto;
+    justify-content: center;
+    flex: 0 0 auto;
+    gap: 0;
+  }
+
+  .contact-link {
+    display: none;
   }
 
   .hero {
@@ -1080,6 +1120,23 @@ input[type="range"] {
 
   .booth-card-media {
     min-height: 240px;
+    order: 4;
+  }
+
+  .booth-card > .booth-label {
+    order: 1;
+  }
+
+  .booth-card h3 {
+    order: 2;
+  }
+
+  .booth-card > p {
+    order: 3;
+  }
+
+  .booth-card ul {
+    order: 5;
   }
 
   .process-heading h2 {
