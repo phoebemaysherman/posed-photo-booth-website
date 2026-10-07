@@ -1,8 +1,8 @@
 const pricing = {
   "Mirror Booth": {
-    base: 650,
+    base: 795,
     includedHours: 2,
-    extraHour: 150,
+    extraHour: 200,
   },
   guestFees: [
     { min: 401, fee: 550 },
@@ -15,11 +15,12 @@ const pricing = {
     "Corporate event": 150,
     "Branding event": 200,
   },
-  customBackdropFee: 175,
 };
 
-const businessEmail = "hello@posedphotoboothco.com";
+const businessEmail = "contact@posedevents.com";
+const formSubmitEndpoint = `https://formsubmit.co/ajax/${businessEmail}`;
 const form = document.querySelector("#quote-form");
+const contactForm = document.querySelector("#contact-form");
 const steps = Array.from(document.querySelectorAll(".form-step"));
 const progressText = document.querySelector("#progress-text");
 const progressFill = document.querySelector("#progress-fill");
@@ -32,6 +33,7 @@ const guestValue = document.querySelector("#guest-count-value");
 const quoteTotal = document.querySelector("#quote-total");
 const quoteSummary = document.querySelector("#quote-summary");
 const emailQuote = document.querySelector("#email-quote");
+const contactMessage = document.querySelector("#contact-message");
 
 let currentStep = 0;
 let lastQuote = null;
@@ -49,7 +51,7 @@ function getValue(name) {
 }
 
 function selectedBooth() {
-  return form.querySelector("input[name='booth']:checked").value;
+  return "Mirror Booth";
 }
 
 function showStep(index) {
@@ -100,17 +102,14 @@ function calculateQuote() {
   const hours = Number(getValue("hours"));
   const guestCount = Number(getValue("guestCount"));
   const eventType = getValue("eventType");
-  const backdrop = getValue("backdrop");
   const extraHours = Math.max(0, hours - boothPricing.includedHours);
   const guestFee = pricing.guestFees.find((tier) => guestCount >= tier.min)?.fee || 0;
   const eventFee = pricing.eventFees[eventType] || 0;
-  const backdropFee = backdrop === "Custom backdrop" ? pricing.customBackdropFee : 0;
   const total =
     boothPricing.base +
     extraHours * boothPricing.extraHour +
     guestFee +
-    eventFee +
-    backdropFee;
+    eventFee;
 
   return {
     total,
@@ -123,7 +122,6 @@ function calculateQuote() {
     location: getValue("location"),
     printFormat: getValue("printFormat"),
     photoStyle: getValue("photoStyle"),
-    backdrop,
     setupLocation: getValue("setupLocation"),
     powerAccess: getValue("powerAccess"),
     notes: getValue("notes"),
@@ -147,7 +145,6 @@ function quoteText(quote) {
     `Booth time: ${quote.hours} hours`,
     `Print format: ${quote.printFormat}`,
     `Photo style: ${quote.photoStyle}`,
-    `Backdrop: ${quote.backdrop}`,
     `Setup location: ${quote.setupLocation}`,
     `Power access: ${quote.powerAccess}`,
     `Notes: ${quote.notes || "None"}`,
@@ -164,12 +161,62 @@ function updateQuoteResult() {
 
   const subject = encodeURIComponent(`POSED quote for ${lastQuote.eventType || "my event"}`);
   const body = encodeURIComponent(
-    `Hi POSED Photo Booth Co.,\n\nPlease email me this quote and availability details.\n\n${quoteText(lastQuote)}\n\nI understand this is an estimate and final pricing may change based on travel, venue needs, availability, and custom requests.`
+    `Hi POSED Events,\n\nI would like to reserve my date and confirm availability.\n\n${quoteText(lastQuote)}\n\nI understand final pricing is confirmed after you review my event details. Additional travel, venue requirements, extended hours, parking, or special requests may affect the final quote.`
   );
 
   emailQuote.href = `mailto:${businessEmail}?subject=${subject}&body=${body}`;
   emailQuote.classList.remove("is-disabled");
   emailQuote.removeAttribute("aria-disabled");
+}
+
+async function sendToBusinessEmail(data) {
+  const response = await fetch(formSubmitEndpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+    },
+    body: data,
+  });
+
+  if (!response.ok) {
+    throw new Error("Form submission failed");
+  }
+
+  return response.json();
+}
+
+function quoteFormData(quote) {
+  const data = new FormData();
+  data.append("_subject", `New POSED Events quote request - ${quote.eventType || "Event"}`);
+  data.append("_template", "table");
+  data.append("Form type", "Quote request");
+  data.append("Estimated quote", money(quote.total));
+  data.append("Name", quote.name);
+  data.append("Email", quote.email);
+  data.append("Phone", quote.phone);
+  data.append("Event type", quote.eventType);
+  data.append("Event date", quote.eventDate || "Not provided");
+  data.append("Event start time", quote.eventTime || "Not provided");
+  data.append("Venue or city", quote.location || "Not provided");
+  data.append("Guest count", quote.guestCount);
+  data.append("Booth", quote.booth);
+  data.append("Booth time", `${quote.hours} hours`);
+  data.append("Print format", quote.printFormat);
+  data.append("Photo style", quote.photoStyle);
+  data.append("Setup location", quote.setupLocation);
+  data.append("Power access", quote.powerAccess);
+  data.append("Notes", quote.notes || "None");
+  data.append(
+    "Includes",
+    "Delivery, setup and breakdown, an on-site attendant, unlimited sessions during the event, custom photo strip design, and instant prints."
+  );
+  data.append(
+    "Fine print",
+    "Final pricing is confirmed after we review the event details. Additional travel, venue requirements, extended hours, parking, or special requests may affect the final quote."
+  );
+  data.append("Full quote summary", quoteText(quote));
+
+  return data;
 }
 
 guestInput.addEventListener("input", () => {
@@ -198,7 +245,7 @@ form.addEventListener("change", () => {
   }
 });
 
-form.addEventListener("submit", (event) => {
+form.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   if (!validateAllSteps()) {
@@ -206,8 +253,44 @@ form.addEventListener("submit", (event) => {
   }
 
   updateQuoteResult();
-  message.textContent =
-    "Your quote has been submitted. We'll confirm availability and contact you by email or phone with next steps. A deposit is required to reserve your date.";
+  submitButton.disabled = true;
+  message.textContent = "Sending your quote request...";
+
+  try {
+    await sendToBusinessEmail(quoteFormData(lastQuote));
+    message.textContent =
+      "Your quote has been submitted. We'll confirm availability and contact you by email or phone with next steps. A deposit is required to reserve your date.";
+  } catch (error) {
+    message.textContent =
+      "We could not send the form automatically. Please use the Reserve my date button so we still receive your details.";
+  } finally {
+    submitButton.disabled = false;
+  }
+});
+
+contactForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  if (!contactForm.checkValidity()) {
+    contactForm.reportValidity();
+    return;
+  }
+
+  const submit = contactForm.querySelector("button[type='submit']");
+  const data = new FormData(contactForm);
+  submit.disabled = true;
+  contactMessage.textContent = "Sending your message...";
+
+  try {
+    await sendToBusinessEmail(data);
+    contactForm.reset();
+    contactMessage.textContent = "Your message has been sent. We'll follow up by email.";
+  } catch (error) {
+    contactMessage.textContent =
+      "We could not send the message automatically. Please email contact@posedevents.com.";
+  } finally {
+    submit.disabled = false;
+  }
 });
 
 showStep(0);

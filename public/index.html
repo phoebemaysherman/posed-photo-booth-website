@@ -20,7 +20,7 @@
         </span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a class="contact-link" href="mailto:contat@posedevents.com?subject=POSED%20Events%20inquiry">Contact</a>
+        <a class="contact-link" href="#contact">Contact</a>
       </nav>
     </header>
 
@@ -174,25 +174,6 @@
             </label>
           </fieldset>
 
-          <fieldset class="form-step" data-step="7">
-            <legend>Your photo booth experience</legend>
-            <div class="choice-grid">
-              <label class="choice-card">
-                <input type="radio" name="booth" value="Mirror Booth" checked>
-                <span>
-                  <strong>Mirror Booth</strong>
-                  <small>Starting at $650</small>
-                  Interactive full-body mirror photos, on-screen signing, and prints.
-                </span>
-                <img
-                  class="choice-image"
-                  src="assets/mirror-booth-air.png"
-                  alt="Mirror Booth Air setup with event lighting"
-                >
-              </label>
-            </div>
-          </fieldset>
-
           <fieldset class="form-step" data-step="8">
             <legend>How many hours do you need the booth?</legend>
             <label>
@@ -227,18 +208,6 @@
                 <option value="Black and white">Black and white</option>
                 <option value="Both color and black and white">Both</option>
                 <option value="Unsure">Unsure</option>
-              </select>
-            </label>
-          </fieldset>
-
-          <fieldset class="form-step" data-step="11">
-            <legend>Do you want a custom backdrop?</legend>
-            <label>
-              Backdrop
-              <select name="backdrop">
-                <option value="Standard backdrop">Standard backdrop</option>
-                <option value="Custom backdrop">Custom backdrop</option>
-                <option value="Not sure yet">Not sure yet</option>
               </select>
             </label>
           </fieldset>
@@ -300,10 +269,66 @@
           <p class="eyebrow">Your estimated quote</p>
           <strong id="quote-total">$0</strong>
           <p id="quote-summary">Complete the form to see an estimate.</p>
+          <p class="quote-includes">
+            Includes delivery, setup and breakdown, an on-site attendant,
+            unlimited sessions during your event, custom photo strip design, and
+            instant prints.
+          </p>
+          <p class="quote-fine-print">
+            Final pricing is confirmed after we review your event details.
+            Additional travel, venue requirements, extended hours, parking, or
+            special requests may affect the final quote.
+          </p>
           <a class="email-button is-disabled" id="email-quote" href="#" aria-disabled="true">
-            Email quote
+            Reserve my date
           </a>
         </aside>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-copy">
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Have a question before you book?</h2>
+          <p>
+            Send us a note and we'll follow up by email. For pricing and
+            availability, the quick quote form above gives us the details we
+            need fastest.
+          </p>
+        </div>
+
+        <form
+          class="contact-form"
+          id="contact-form"
+          action="https://formsubmit.co/contact@posedevents.com"
+          method="POST"
+        >
+          <input type="hidden" name="_subject" value="New POSED Events contact form">
+          <input type="hidden" name="_template" value="table">
+          <input type="text" name="_honey" tabindex="-1" autocomplete="off" hidden>
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required>
+          </label>
+          <label>
+            Phone
+            <input type="tel" name="phone" autocomplete="tel">
+          </label>
+          <label>
+            Message
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Tell us what you're planning or what questions you have."
+              required
+            ></textarea>
+          </label>
+          <button type="submit">Send message</button>
+          <p class="form-message" id="contact-message" role="status"></p>
+        </form>
       </section>
 
       <section class="owner-section" aria-label="Owner note">
@@ -346,7 +371,7 @@
         </span>
       </a>
       <p>Photo booth experiences for weddings, parties, and celebrations.</p>
-      <a class="footer-email" href="mailto:contat@posedevents.com?subject=POSED%20Events%20inquiry">contat@posedevents.com</a>
+      <a class="footer-email" href="mailto:contact@posedevents.com?subject=POSED%20Events%20inquiry">contact@posedevents.com</a>
     </footer>
 
     <a class="mobile-sticky-cta" href="#quote">Get Quote</a>
